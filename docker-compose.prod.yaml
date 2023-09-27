@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  backend:
+    build:
+      context: ./Backend/
+      dockerfile: ./dockerfile
+    container_name: rust_backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - YOOCASSA_STORE_ID=${YOOCASSA_STORE_ID} 
+      - YOOCASSA_KEY=${YOOCASSA_KEY}
+      - TOKEN=${TOKEN}
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/nginx.dockerfile
+      args:
+        - VUE_APP_API_URL=${VUE_APP_API_URL:-localhost}
+    container_name: nginx
+    restart: always
+    command: [ "/bin/sh", "-c", "while :; nginx -s reload; do sleep 6h & wait $${!}; done & nginx -g 'daemon off;'" ]
+    volumes:
+      - ./.nginx:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+
+
+  pg_db:
+    image: postgres:15.1-alpine
+    container_name: pg_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=tours
+    volumes:
+      - db_pg_volume:/var/lib/postgresql/data/
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - pg_db
+
+volumes:
+  db_pg_volume:
