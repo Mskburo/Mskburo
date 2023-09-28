@@ -50,3 +50,7 @@ services:
 
 volumes:
   db_pg_volume:
+
+networks:
+  ibuymovie-network:
+    driver: bridge
