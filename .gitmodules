@@ -4,3 +4,6 @@
 [submodule "Backend"]
 	path = Backend
 	url = https://github.com/Mskburo/Backend
+[submodule "Backend_emailer"]
+	path = Backend_emailer
+	url = https://github.com/Mskburo/Backend_emailer
