@@ -10,6 +10,8 @@ services:
       - YOOCASSA_STORE_ID=${YOOCASSA_STORE_ID} 
       - YOOCASSA_KEY=${YOOCASSA_KEY}
       - TOKEN=${TOKEN}
+      - JWT_SECRET=${JWT_SECRET}
+      - EMAILER_URL=${EMAILER_URL}
 
   emailer:
     image: emailer:latest
@@ -45,6 +47,7 @@ services:
     volumes:
       - db_pg_volume:/var/lib/postgresql/data/
 
+
   adminer:
     image: adminer
     container_name: adminer
@@ -58,5 +61,5 @@ volumes:
   db_pg_volume:
 
 networks:
-  ibuymovie-network:
+  default-network:
     driver: bridge
