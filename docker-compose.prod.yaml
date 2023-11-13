@@ -13,6 +13,16 @@ services:
       - YOOCASSA_KEY=${YOOCASSA_KEY}
       - TOKEN=${TOKEN}
 
+  emailer:
+    build:
+      context: ./Backend_emailer/
+      dockerfile: ./dockerfile
+    container_name: emailer
+    restart: unless-stopped
+    environment:
+      - SENDER_EMAIL={SENDER_EMAIL}
+      - SENDER_PASSWORD={SENDER_PASSWORD}
+      
   nginx:
     build:
       context: .
