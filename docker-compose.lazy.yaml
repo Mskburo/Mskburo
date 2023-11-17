@@ -18,8 +18,8 @@ services:
     container_name: emailer
     restart: unless-stopped
     environment:
-      - SENDER_EMAIL={SENDER_EMAIL}
-      - SENDER_PASSWORD={SENDER_PASSWORD}
+      - SENDER_EMAIL=${SENDER_EMAIL}
+      - SENDER_PASSWORD=${SENDER_PASSWORD}
 
   nginx:
     build:
