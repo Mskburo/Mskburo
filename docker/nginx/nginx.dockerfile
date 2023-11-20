@@ -8,7 +8,7 @@ RUN npm install
 COPY ../../Frontend .
 
 RUN npm run build
-
+# ------------------------------------------
 FROM node:gallium-alpine as build-admin
 
 WORKDIR /app
@@ -19,6 +19,7 @@ RUN npm install
 COPY ../../admin .
 
 RUN npm run build
+# ------------------------------------------
 
 FROM nginx:latest
 
