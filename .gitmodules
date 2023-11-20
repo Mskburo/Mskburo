@@ -7,3 +7,6 @@
 [submodule "Backend_emailer"]
 	path = Backend_emailer
 	url = https://github.com/Mskburo/Backend_emailer
+[submodule "admin"]
+	path = admin
+	url = https://github.com/Mskburo/admin
