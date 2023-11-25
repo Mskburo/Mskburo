@@ -11,4 +11,4 @@ git submodule update --recursive
 chmod +x restart.sh
 
 echo -e "\033[1;32m \033[41m Launching a project... \033[0m"
-make up
+make lazy
