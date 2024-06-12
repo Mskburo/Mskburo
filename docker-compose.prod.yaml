@@ -12,7 +12,10 @@ services:
       - YOOCASSA_STORE_ID=${YOOCASSA_STORE_ID} 
       - YOOCASSA_KEY=${YOOCASSA_KEY}
       - TOKEN=${TOKEN}
-
+      - JWT_SECRET=${JWT_SECRET}
+      - EMAILER_URL=${EMAILER_URL}
+    ports:
+      - "8090:8090"
   emailer:
     build:
       context: ./Backend_emailer/
@@ -64,3 +67,7 @@ volumes:
 networks:
   ibuymovie-network:
     driver: bridge
+    
+    
+    
+    
