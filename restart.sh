@@ -16,6 +16,7 @@ loadEnv .env.prod
 
 echo -e "\033[1;32m Updating...\033[1;32m"
 git fetch --all
+git reset --hard origin/main
 git pull
 
 echo -e "\033[1;32m \033[41m Granting rights to bsh scripts... \033[0m"
